@@ -11,6 +11,7 @@ router.get('/login', async (req, res) => {
 });
 
 router.post('/login', passport.authenticate('local', {failureRedirect: '/login'}), async (req, res) => {
+    console.log(req.user)
     if (req.user.isStudent)
         return res.redirect(`/student-home/${req.user._id}`);
     return res.redirect(`/teacher-home/${req.user._id}`);
